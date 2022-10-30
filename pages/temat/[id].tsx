@@ -27,6 +27,9 @@ const Subject = ({ subject: { name, description, code } }: Props) => {
   const handleCopy = (): void => {
     navigator.clipboard.writeText(code);
     setIsCopied(true);
+    setTimeout(() => {
+      setIsCopied(false);
+    }, 2000);
   };
 
   const handleScroll = (e: React.UIEvent<HTMLElement>): void => {
