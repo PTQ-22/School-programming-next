@@ -11,7 +11,7 @@ export const Container = styled.main`
   transition: 0.5s;
   border-radius: 10px;
   width: 95%;
-  height: 75vh;
+  height: 80vh;
   overflow: scroll;
   scrollbar-width: none;
   &::-webkit-scrollbar {
@@ -19,9 +19,9 @@ export const Container = styled.main`
   }
   -webkit-mask-image: -webkit-radial-gradient(white, black);
   mask-image: radial-gradient(white, black);
-  @media (min-width: 800px) {
+  @media (min-width: 900px) {
     width: 900px;
-    height: 800px;
+    height: 90vh;
   }
 `;
 
