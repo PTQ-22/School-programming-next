@@ -61,32 +61,6 @@ export const CodeWrapper = styled.section`
   user-select: text;
 `;
 
-interface CopyButtonProps {
-  readonly isCopied: boolean;
-}
-
-export const CopyButton = styled.div<CopyButtonProps>`
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  opacity: 0.8;
-  padding: 12px;
-  border: none;
-  border-radius: 10px;
-  font-weight: bold;
-  font-size: 0.9rem;
-  @media (min-width: 700px) {
-    font-size: 1.5rem;
-  }
-  box-shadow: 1px 1px 1px 1px rgba(255, 255, 255, 0.2);
-  background-color: ${({ isCopied }) => (isCopied ? "#757373e9" : "#e9e9e9")};
-  transition: all 0.4s;
-  &:hover {
-    background-color: ${({ isCopied }) =>
-      isCopied ? "#757373e9" : "#a2a2a2e9"};
-  }
-`;
-
 export const ScrollButton = styled.div`
   position: sticky;
   bottom: 16%;
