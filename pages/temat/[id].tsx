@@ -10,7 +10,8 @@ import { SubjectData, SubjectName } from "../../types/types";
 import NavBar from "../../components/NavBar";
 import { Arrow } from "../../components/Arrow";
 import { Wrapper } from "../../styles/Home.styles";
-import { Container, Description, CodeWrapper, CopyButton, ScrollButton, ArrowWrapper } from "../../styles/Subject.styles";
+import { Container, Description, CodeWrapper, ScrollButton, ArrowWrapper } from "../../styles/Subject.styles";
+import { Buttons } from "../../components/Buttons/Button";
 
 
 type Props = {
@@ -18,19 +19,10 @@ type Props = {
 };
 
 const Subject = ({ subject: { name, description, code } }: Props) => {
-  const [isCopied, setIsCopied] = useState<boolean>(false);
   const [isScrollButton, setIsScrollButton] = useState<boolean>(false);
   const [isScrollButtonAnimaion, setIsScrollButtonAnimation] =
     useState<boolean>(false);
   const scrollRef = useRef<HTMLDivElement>(null);
-
-  const handleCopy = (): void => {
-    navigator.clipboard.writeText(code);
-    setIsCopied(true);
-    setTimeout(() => {
-      setIsCopied(false);
-    }, 2000);
-  };
 
   const handleScroll = (e: React.UIEvent<HTMLElement>): void => {
     const scrollTop = (e.target as HTMLElement).scrollTop;
@@ -66,9 +58,7 @@ const Subject = ({ subject: { name, description, code } }: Props) => {
           <SyntaxHighlighter language="cpp" style={dark}>
             {code}
           </SyntaxHighlighter>
-          <CopyButton onClick={handleCopy} isCopied={isCopied}>
-            {isCopied ? "Skopiowano" : "Kopiuj"}{" "}
-          </CopyButton>
+          <Buttons code={code} downloadName={name + '.cpp'} />
         </CodeWrapper>
         {isScrollButton ? (
           <ScrollButton onClick={handleScrollUp}>
